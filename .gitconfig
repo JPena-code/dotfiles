@@ -1,6 +1,7 @@
 [user]
 	name = Julio Quintero
 	email = jequinterope@unal.edu.co
+	signingKey = F95F83CC91EC2107
 [init]
 	defaultBranch = main
 [pull]
@@ -10,3 +11,11 @@
 	autocrlf = input
 [advice]
 	addIgnoredFile = false
+[gpg]
+	minTrustLevel = fully
+[push]
+	gpgSign = if-asked
+[tag]
+	gpgSign = true
+[commit]
+	gpgsign = true

@@ -14,6 +14,9 @@ setopt hist_find_no_dups
 
 source "$HOME/.zprofile"
 
+# Set the GPG TTY to be the same as the current one
+export GPG_TTY="$TTY"
+
 # Export path to SQL server tools if path is found
 [[ -d "/opt/mssql-tools*/bin" ]] && export $PATH="$PATH:/opt/mssql-tools18/bin"
 
@@ -73,6 +76,7 @@ zinit wait lucid light-mode for \
 
 # OMZ snippet pluings
 zinit lucid silent-mode for \
+  OMZL::git.zsh \
   OMZP::git \
   OMZP::sudo \
   OMZP::command-not-found \
