@@ -1,0 +1,12 @@
+[user]
+	name = Julio Quintero
+	email = jequinterope@unal.edu.co
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[core]
+	editor = vim
+	autocrlf = input
+[advice]
+	addIgnoredFile = false

@@ -1,0 +1,13 @@
+# Ignore local git configuration for repo
+\.git
+\.gitignore
+\.gitmodules
+
+README.*
+
+# Ignore local .stowrc file
+.stowrc
+
+# GnuG keys
+keys
+
