@@ -14,6 +14,10 @@ setopt hist_find_no_dups
 
 source "$HOME/.zprofile"
 
+# Create config folder for programs that
+# desn't create its folder if not exists
+[[ -d "$XDG_DATA_HOME/psql" ]] || mkdir -p "$XDG_DATA_HOME/psql"
+
 # Change compinit dumpfiles location
 export ZSH_COMPDUMP="$XDG_DATA_HOME/zsh/zcompdump"
 [[ -d "$ZSH_COMPDUMP" ]] || mkdir -p "$ZSH_COMPDUMP"
