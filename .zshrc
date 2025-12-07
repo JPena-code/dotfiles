@@ -14,6 +14,10 @@ setopt hist_find_no_dups
 
 source "$HOME/.zprofile"
 
+# Change compinit dumpfiles location
+export ZSH_COMPDUMP="$XDG_DATA_HOME/zsh/zcompdump"
+[[ -d "$ZSH_COMPDUMP" ]] || mkdir -p "$ZSH_COMPDUMP"
+
 # Set the GPG TTY to be the same as the current one
 export GPG_TTY="$TTY"
 
