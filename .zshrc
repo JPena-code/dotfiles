@@ -45,27 +45,35 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # Powerlevel10k theme instalation
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice silent depth=1; zinit light romkatv/powerlevel10k
+
+# TODO: learn about fd a replacement of find
+# export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
 
 # installing it from zinit  makes them lack of a man
 # page, installad from git source for the latest version
 # and use `as'null'` to avoid modifications in $PATH
-zinit wait'1' silent-mode as"null" nocompile \
+zinit wait'1' lucid light-mode as"null" nocompile \
   from"gh-r" \
   mv"fzf -> $ZPFX/bin" \
-  blockf \
-  atload'eval "$(fzf --zsh)"' for \
+  blockf for \
+  atload'eval "$(fzf --zsh)"' \
+    junegunn/fzf \
+  from"gh" \
+  depth=1 \
+  mv"bin/fzf* -> $ZPFX/bin" \
+  id-as"fzf-scripts" \
     junegunn/fzf
 
 # Install fnm Node manager
-zinit wait'2' lucid silent-mode as'null' \
+zinit wait'2' lucid light-mode as'null' \
   mv"fnm -> $ZPFX/bin" \
   atload'eval "$(fnm env --use-on-cd --shell zsh)"' \
   from"gh-r" for \
     Schniz/fnm
 
 # Install pnpm Node package manager
-zinit wait'3' lucid silent-mode as'null' \
+zinit wait'3' lucid light-mode as'null' \
   from'gh-r' \
   atload'pnpm completion zsh > _pnpm; source _pnpm' \
   blockf \
@@ -111,10 +119,19 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=always $realpath'
 zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
 
+# For built-in programs
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
+alias less='less -RKF'
+
 alias pn=pnpm
+alias bat=batcat
+alias cat=bat
+
+# Global aliases para override help output
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
